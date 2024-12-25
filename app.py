@@ -2,6 +2,7 @@ import streamlit as st
 import helper
 import pickle
 import sklearn
+import nltk
 
 model = pickle.load(open("models/model.pkl", 'rb'))
 vectorizer = pickle.load(open("models/vectorizer.pkl", 'rb'))
