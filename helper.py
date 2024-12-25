@@ -2,6 +2,9 @@ import re   ### for regex expressions
 from nltk.corpus import stopwords ### NLTK for NLP taskss 
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
+import nltk
+nltk.download('punkt_tab')
+nltk.download('stopwords')
 
 def preprocessing_step(text):
   # lower text
