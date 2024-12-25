@@ -19,8 +19,8 @@ token = helper.preprocessing_step(text)
 vectorized_data = vectorizer.transform([token])
 prediction = model.predict(vectorized_data)
 
-if prediction[0] == 0: prediction = "Negative"
-if prediction[0] == 1: prediction = "Positive"
+if prediction[0] == 0: prediction = "Negative :("
+if prediction[0] == 1: prediction = "Positive :)"
 
 if state :
     st.text(prediction)
