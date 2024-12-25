@@ -1,21 +1,20 @@
-import re 
-from nltk.corpus import stopwords
+import re
 from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.tree import DecisionTreeClassifier
-import nltk
-nltk.download('punkt_tab')
-  
+
 def preprocessing_step(text):
+  # lower text
   text = text.lower()
-  ### Remove any special charchter
-  text =re.sub('[^a-zA-Z]',' ',text)
-  tokens = word_tokenize(text)
-  stop_words = set(stopwords.words('english'))
-  filtered_tokens = [word for word in tokens if word not in stop_words]
-  stemmer = PorterStemmer()
-  stemmed_tokens = [stemmer.stem(word) for word in filtered_tokens]
-  stemmed_tokens = ' '.join(stemmed_tokens)
-  return stemmed_tokens
+  # remove any special character
+  text = re.sub(r"[^a-zA-Z0-9]", " ", text)
+  # tokenization 'i love you ?????!!!' -> 'i', 'love', 'you' , '?', '?'
+  token = word_tokenize(text)
+  # stop words
+  stop_word = stopwords.words("english")
+  token_without_stop =  [word for word in token if word not in stop_word]
+
+  # steming porter stemmer(fast with low accuracy) / lemetization(slow but accurate)
+  ps = PorterStemmer()
+  token_stem = [ps.stem(word) for word in token_without_stop]
+  return " ".join(token_stem)
