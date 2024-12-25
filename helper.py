@@ -1,6 +1,6 @@
-import re
+import re   ### for regex expressions
+from nltk.corpus import stopwords ### NLTK for NLP taskss 
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 
 def preprocessing_step(text):
